@@ -16,6 +16,7 @@ const (
 	MAX_RLP_SIZE = 4096
 	HASH_SIZE = 32
 	MAX_NEVM_BLOCK_SIZE = (1024 << 20) // 1024 MiB
+	KZG_SIZE = 48
 )
 const ( 	
 	ASSET_UPDATE_DATA = 1 // can you update public data field?
@@ -26,6 +27,7 @@ const (
  	ASSET_UPDATE_AUXFEE = 32 // can you update aux fees?
 	ASSET_UPDATE_CAPABILITYFLAGS = 64 // can you update capability flags?
 	ASSET_INIT = 128 // set when creating asset
+	FieldElementsPerBlob = 65536
 )
 type AssetOutValueType struct {
 	N uint32
@@ -91,12 +93,19 @@ type SyscoinBurnToEthereumType struct {
 	EthAddress []byte `json:"ethAddress,omitempty"`
 }
 
+type NEVMBlob struct {
+	VersionHash []byte
+	Commitment []byte
+	Blob []byte
+}
+
 type NEVMBlockWire struct {
 	NEVMBlockHash []byte
 	TxRoot []byte
 	ReceiptRoot []byte
 	NEVMBlockData []byte
 	SYSBlockHash []byte
+	Blobs []*NEVMBlob
 }
 
 func PutUint(w io.Writer, n uint64) error {
@@ -142,7 +151,6 @@ func ReadUint(r io.Reader) (uint64, error) {
             return n, nil
         }
 	}
-	return n, nil
 }
 // Amount compression:
 // * If the amount is 0, output 0
@@ -196,7 +204,48 @@ func DecompressAmount(x uint64) uint64 {
     }
     return n
 }
-
+func (a *NEVMBlob) Deserialize(r io.Reader) error {
+	var err error
+	a.VersionHash, err = ReadVarBytes(r, 0, HASH_SIZE, "VersionHash")
+	if err != nil {
+		return err
+	}
+	// blob length
+	nSize, err := ReadVarInt(r, 0)
+	if err != nil {
+		return err
+	}
+	a.Commitment, err = ReadVarBytes(r, 0, KZG_SIZE, "Commitment")
+	if err != nil {
+		return err
+	}
+	a.Blob, err = ReadVarBytes(r, 0, uint32(nSize), "Blob")
+	if err != nil {
+		return err
+	}
+	return nil
+}
+func (a *NEVMBlob) Serialize(w io.Writer) error {
+	var err error
+	err = WriteVarBytes(w, 0, a.VersionHash)
+	if err != nil {
+		return err
+	}
+	lenBlob := len(a.Blob)
+	err = WriteVarInt(w, 0, uint64(lenBlob))
+	if err != nil {
+		return err
+	}
+	err = WriteVarBytes(w, 0, a.Commitment)
+	if err != nil {
+		return err
+	}
+	err = WriteVarBytes(w, 0, a.Blob)
+	if err != nil {
+		return err
+	}
+	return nil
+}
 func (a *NEVMBlockWire) Deserialize(r io.Reader) error {
 	var err error
 	a.NEVMBlockHash = make([]byte, HASH_SIZE)
@@ -223,6 +272,17 @@ func (a *NEVMBlockWire) Deserialize(r io.Reader) error {
 	if err != nil {
 		return err
 	}
+	numBlobs, err := ReadVarInt(r, 0)
+	if err != nil {
+		return err
+	}
+	a.Blobs = make([]*NEVMBlob, numBlobs)
+	for i := 0; i < int(numBlobs); i++ {
+		err = a.Blobs[i].Deserialize(r)
+		if err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
@@ -246,6 +306,7 @@ func (a *NEVMBlockWire) Serialize(w io.Writer) error {
 	}
 	return nil
 }
+
 
 func (a *NotaryDetailsType) Deserialize(r io.Reader) error {
 	var err error
