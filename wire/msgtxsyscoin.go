@@ -98,14 +98,16 @@ type NEVMBlob struct {
 	Commitment []byte
 	Blob []byte
 }
-
+type NEVMBlobs struct {
+	Blobs []*NEVMBlob
+}
 type NEVMBlockWire struct {
 	NEVMBlockHash []byte
 	TxRoot []byte
 	ReceiptRoot []byte
 	NEVMBlockData []byte
 	SYSBlockHash []byte
-	Blobs []*NEVMBlob
+	VersionHashes [][]byte
 }
 
 func PutUint(w io.Writer, n uint64) error {
@@ -210,16 +212,11 @@ func (a *NEVMBlob) Deserialize(r io.Reader) error {
 	if err != nil {
 		return err
 	}
-	// blob length
-	nSize, err := ReadVarInt(r, 0)
-	if err != nil {
-		return err
-	}
 	a.Commitment, err = ReadVarBytes(r, 0, KZG_SIZE, "Commitment")
 	if err != nil {
 		return err
 	}
-	a.Blob, err = ReadVarBytes(r, 0, uint32(nSize), "Blob")
+	a.Blob, err = ReadVarBytes(r, 0, FieldElementsPerBlob*32, "Blob")
 	if err != nil {
 		return err
 	}
@@ -231,11 +228,6 @@ func (a *NEVMBlob) Serialize(w io.Writer) error {
 	if err != nil {
 		return err
 	}
-	lenBlob := len(a.Blob)
-	err = WriteVarInt(w, 0, uint64(lenBlob))
-	if err != nil {
-		return err
-	}
 	err = WriteVarBytes(w, 0, a.Commitment)
 	if err != nil {
 		return err
@@ -243,6 +235,20 @@ func (a *NEVMBlob) Serialize(w io.Writer) error {
 	err = WriteVarBytes(w, 0, a.Blob)
 	if err != nil {
 		return err
+	}
+	return nil
+}
+func (a *NEVMBlobs) Deserialize(r io.Reader) error {
+	numBlobs, err := ReadVarInt(r, 0)
+	if err != nil {
+		return err
+	}
+	a.Blobs = make([]*NEVMBlob, numBlobs)
+	for i := 0; i < int(numBlobs); i++ {
+		err = a.Blobs[i].Deserialize(r)
+		if err != nil {
+			return err
+		}
 	}
 	return nil
 }
@@ -272,13 +278,14 @@ func (a *NEVMBlockWire) Deserialize(r io.Reader) error {
 	if err != nil {
 		return err
 	}
-	numBlobs, err := ReadVarInt(r, 0)
+	numVH, err := ReadVarInt(r, 0)
 	if err != nil {
 		return err
 	}
-	a.Blobs = make([]*NEVMBlob, numBlobs)
-	for i := 0; i < int(numBlobs); i++ {
-		err = a.Blobs[i].Deserialize(r)
+	a.VersionHashes = make([][]byte, numVH)
+	for i := 0; i < int(numVH); i++ {
+		a.VersionHashes[i] = make([]byte, HASH_SIZE)
+		_, err = io.ReadFull(r, a.VersionHashes[i])
 		if err != nil {
 			return err
 		}
