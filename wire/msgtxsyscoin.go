@@ -15,8 +15,7 @@ const (
 	MAX_SIG_SIZE = 65
 	MAX_RLP_SIZE = 4096
 	HASH_SIZE = 32
-	MAX_NEVM_BLOCK_SIZE = (1024 << 20) // 1024 MiB
-	KZG_SIZE = 48
+	MAX_NEVM_BLOCK_SIZE = 33554432 // 32 MB
 )
 const ( 	
 	ASSET_UPDATE_DATA = 1 // can you update public data field?
@@ -95,7 +94,6 @@ type SyscoinBurnToEthereumType struct {
 
 type NEVMBlob struct {
 	VersionHash []byte
-	Commitment []byte
 	Blob []byte
 }
 type NEVMBlobs struct {
@@ -212,10 +210,6 @@ func (a *NEVMBlob) Deserialize(r io.Reader) error {
 	if err != nil {
 		return err
 	}
-	a.Commitment, err = ReadVarBytes(r, 0, KZG_SIZE, "Commitment")
-	if err != nil {
-		return err
-	}
 	a.Blob, err = ReadVarBytes(r, 0, FieldElementsPerBlob*32, "Blob")
 	if err != nil {
 		return err
@@ -225,10 +219,6 @@ func (a *NEVMBlob) Deserialize(r io.Reader) error {
 func (a *NEVMBlob) Serialize(w io.Writer) error {
 	var err error
 	err = WriteVarBytes(w, 0, a.VersionHash)
-	if err != nil {
-		return err
-	}
-	err = WriteVarBytes(w, 0, a.Commitment)
 	if err != nil {
 		return err
 	}
