@@ -235,10 +235,12 @@ func (a *NEVMBlobs) Deserialize(r io.Reader) error {
 	}
 	a.Blobs = make([]*NEVMBlob, numBlobs)
 	for i := 0; i < int(numBlobs); i++ {
-		err = a.Blobs[i].Deserialize(r)
+		var nevmBlob NEVMBlob
+		err = nevmBlob.Deserialize(r)
 		if err != nil {
 			return err
 		}
+		a.Blobs[i] = &nevmBlob
 	}
 	return nil
 }
@@ -274,8 +276,7 @@ func (a *NEVMBlockWire) Deserialize(r io.Reader) error {
 	}
 	a.VersionHashes = make([][]byte, numVH)
 	for i := 0; i < int(numVH); i++ {
-		a.VersionHashes[i] = make([]byte, HASH_SIZE)
-		_, err = io.ReadFull(r, a.VersionHashes[i])
+		a.VersionHashes[i], err = ReadVarBytes(r, 0, HASH_SIZE, "VersionHash")
 		if err != nil {
 			return err
 		}
