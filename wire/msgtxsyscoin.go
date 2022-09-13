@@ -27,6 +27,7 @@ const (
 	ASSET_UPDATE_CAPABILITYFLAGS = 64 // can you update capability flags?
 	ASSET_INIT = 128 // set when creating asset
 	FieldElementsPerBlob = 65536
+	MaxBlobSize = FieldElementsPerBlob*32 + 48 // blob + commitment
 )
 type AssetOutValueType struct {
 	N uint32
@@ -210,7 +211,7 @@ func (a *NEVMBlob) Deserialize(r io.Reader) error {
 	if err != nil {
 		return err
 	}
-	a.Blob, err = ReadVarBytes(r, 0, FieldElementsPerBlob*32, "Blob")
+	a.Blob, err = ReadVarBytes(r, 0, MaxBlobSize, "Blob")
 	if err != nil {
 		return err
 	}
