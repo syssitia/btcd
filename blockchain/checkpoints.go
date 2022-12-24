@@ -8,9 +8,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/syscoin/btcd/chaincfg"
-	"github.com/syscoin/btcd/chaincfg/chainhash"
-	"github.com/syscoin/btcd/txscript"
+	"github.com/syssitia/btcd/chaincfg"
+	"github.com/syssitia/btcd/chaincfg/chainhash"
+	"github.com/syssitia/btcd/txscript"
 	"github.com/martinboehm/btcutil"
 )
 

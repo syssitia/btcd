@@ -17,7 +17,7 @@ longest chain the sync peer is aware of.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/syscoin/btcd/netsync
+$ go get -u github.com/syssitia/btcd/netsync
 ```
 
 ## License

@@ -9,7 +9,7 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/syscoin/btcd/txscript"
+	"github.com/syssitia/btcd/txscript"
 )
 
 // TestCheckBlockScripts ensures that validating the all of the scripts in a

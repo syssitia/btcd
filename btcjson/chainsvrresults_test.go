@@ -8,7 +8,7 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/syscoin/btcd/btcjson"
+	"github.com/syssitia/btcd/btcjson"
 )
 
 // TestChainSvrCustomResults ensures any results that have custom marshalling

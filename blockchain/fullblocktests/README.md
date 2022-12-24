@@ -20,7 +20,7 @@ of blocks that exercise the consensus validation rules.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/syscoin/btcd/blockchain/fullblocktests
+$ go get -u github.com/syssitia/btcd/blockchain/fullblocktests
 ```
 
 ## License

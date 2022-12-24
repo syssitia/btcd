@@ -13,7 +13,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/syscoin/btcd/chaincfg/chainhash"
+	"github.com/syssitia/btcd/chaincfg/chainhash"
 	"github.com/davecgh/go-spew/spew"
 )
 

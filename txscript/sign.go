@@ -8,8 +8,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/syscoin/btcd/btcec"
-	"github.com/syscoin/btcd/wire"
+	"github.com/syssitia/btcd/btcec"
+	"github.com/syssitia/btcd/wire"
 	"github.com/martinboehm/btcutil"
 	"github.com/martinboehm/btcutil/chaincfg"
 )

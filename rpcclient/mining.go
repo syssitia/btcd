@@ -9,8 +9,8 @@ import (
 	"encoding/json"
 	"errors"
 
-	"github.com/syscoin/btcd/btcjson"
-	"github.com/syscoin/btcd/chaincfg/chainhash"
+	"github.com/syssitia/btcd/btcjson"
+	"github.com/syssitia/btcd/chaincfg/chainhash"
 	"github.com/martinboehm/btcutil"
 )
 

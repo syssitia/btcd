@@ -17,7 +17,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/syscoin/btcd/btcec"
+	"github.com/syssitia/btcd/btcec"
 )
 
 func main() {

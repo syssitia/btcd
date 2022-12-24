@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	. "github.com/syscoin/btcd/chaincfg"
+	. "github.com/syssitia/btcd/chaincfg"
 )
 
 // Define some of the required parameters for a user-registered

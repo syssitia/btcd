@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/syscoin/btcd/chaincfg/chainhash"
+	"github.com/syssitia/btcd/chaincfg/chainhash"
 )
 
 const (

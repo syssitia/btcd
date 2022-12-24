@@ -14,8 +14,8 @@ import (
 	"runtime/debug"
 	"testing"
 
-	"github.com/syscoin/btcd/chaincfg"
-	"github.com/syscoin/btcd/integration/rpctest"
+	"github.com/syssitia/btcd/chaincfg"
+	"github.com/syssitia/btcd/integration/rpctest"
 )
 
 func testGetBestBlock(r *rpctest.Harness, t *testing.T) {

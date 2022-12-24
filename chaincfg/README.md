@@ -25,7 +25,7 @@ import (
 	"log"
 
 	"github.com/martinboehm/btcutil"
-	"github.com/syscoin/btcd/chaincfg"
+	"github.com/syssitia/btcd/chaincfg"
 )
 
 var testnet = flag.Bool("testnet", false, "operate on the testnet Bitcoin network")
@@ -56,7 +56,7 @@ func main() {
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/syscoin/btcd/chaincfg
+$ go get -u github.com/syssitia/btcd/chaincfg
 ```
 
 ## GPG Verification Key

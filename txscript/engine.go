@@ -11,8 +11,8 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/syscoin/btcd/btcec"
-	"github.com/syscoin/btcd/wire"
+	"github.com/syssitia/btcd/btcec"
+	"github.com/syssitia/btcd/wire"
 )
 
 // ScriptFlags is a bitmask defining additional operations or tests that will be

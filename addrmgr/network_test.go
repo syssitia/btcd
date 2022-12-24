@@ -8,8 +8,8 @@ import (
 	"net"
 	"testing"
 
-	"github.com/syscoin/btcd/addrmgr"
-	"github.com/syscoin/btcd/wire"
+	"github.com/syssitia/btcd/addrmgr"
+	"github.com/syssitia/btcd/wire"
 )
 
 // TestIPTypes ensures the various functions which determine the type of an IP

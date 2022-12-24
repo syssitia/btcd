@@ -11,7 +11,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/syscoin/btcd/btcjson"
+	"github.com/syssitia/btcd/btcjson"
 )
 
 // helpDescsEnUS defines the English descriptions used for the help strings.

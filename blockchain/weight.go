@@ -7,8 +7,8 @@ package blockchain
 import (
 	"fmt"
 
-	"github.com/syscoin/btcd/txscript"
-	"github.com/syscoin/btcd/wire"
+	"github.com/syssitia/btcd/txscript"
+	"github.com/syssitia/btcd/wire"
 	"github.com/martinboehm/btcutil"
 )
 

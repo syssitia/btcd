@@ -7,7 +7,7 @@ package blockchain
 import (
 	"fmt"
 
-	"github.com/syscoin/btcd/database"
+	"github.com/syssitia/btcd/database"
 	"github.com/martinboehm/btcutil"
 )
 

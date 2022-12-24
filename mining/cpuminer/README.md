@@ -16,7 +16,7 @@ now.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/syscoin/btcd/mining/cpuminer
+$ go get -u github.com/syssitia/btcd/mining/cpuminer
 ```
 
 ## License

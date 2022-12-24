@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/syscoin/btcd/wire"
+	"github.com/syssitia/btcd/wire"
 	"github.com/davecgh/go-spew/spew"
 )
 

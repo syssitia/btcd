@@ -5,12 +5,12 @@
 package netsync
 
 import (
-	"github.com/syscoin/btcd/blockchain"
-	"github.com/syscoin/btcd/chaincfg"
-	"github.com/syscoin/btcd/chaincfg/chainhash"
-	"github.com/syscoin/btcd/mempool"
-	"github.com/syscoin/btcd/peer"
-	"github.com/syscoin/btcd/wire"
+	"github.com/syssitia/btcd/blockchain"
+	"github.com/syssitia/btcd/chaincfg"
+	"github.com/syssitia/btcd/chaincfg/chainhash"
+	"github.com/syssitia/btcd/mempool"
+	"github.com/syssitia/btcd/peer"
+	"github.com/syssitia/btcd/wire"
 	"github.com/martinboehm/btcutil"
 )
 

@@ -12,7 +12,7 @@ specific hash algorithm to be abstracted.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/syscoin/btcd/chaincfg/chainhash
+$ go get -u github.com/syssitia/btcd/chaincfg/chainhash
 ```
 
 ## GPG Verification Key

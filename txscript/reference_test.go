@@ -15,8 +15,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/syscoin/btcd/chaincfg/chainhash"
-	"github.com/syscoin/btcd/wire"
+	"github.com/syssitia/btcd/chaincfg/chainhash"
+	"github.com/syssitia/btcd/wire"
 	"github.com/martinboehm/btcutil"
 )
 

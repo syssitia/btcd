@@ -1,4 +1,4 @@
-module github.com/syscoin/btcd
+module github.com/syssitia/btcd
 
 require (
 	github.com/aead/siphash v1.0.1

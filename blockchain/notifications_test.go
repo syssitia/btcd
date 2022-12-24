@@ -7,7 +7,7 @@ package blockchain
 import (
 	"testing"
 
-	"github.com/syscoin/btcd/chaincfg"
+	"github.com/syssitia/btcd/chaincfg"
 )
 
 // TestNotifications ensures that notification callbacks are fired on events.

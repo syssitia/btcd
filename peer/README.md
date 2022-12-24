@@ -58,7 +58,7 @@ A quick overview of the major features peer provides are as follows:
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/syscoin/btcd/peer
+$ go get -u github.com/syssitia/btcd/peer
 ```
 
 ## Examples

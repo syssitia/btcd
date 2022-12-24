@@ -10,10 +10,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/syscoin/btcd/chaincfg"
-	"github.com/syscoin/btcd/database"
-	_ "github.com/syscoin/btcd/database/ffldb"
-	"github.com/syscoin/btcd/wire"
+	"github.com/syssitia/btcd/chaincfg"
+	"github.com/syssitia/btcd/database"
+	_ "github.com/syssitia/btcd/database/ffldb"
+	"github.com/syssitia/btcd/wire"
 	"github.com/martinboehm/btcutil"
 )
 
@@ -22,8 +22,8 @@ func ExampleCreate() {
 	// This example assumes the ffldb driver is imported.
 	//
 	// import (
-	// 	"github.com/syscoin/btcd/database"
-	// 	_ "github.com/syscoin/btcd/database/ffldb"
+	// 	"github.com/syssitia/btcd/database"
+	// 	_ "github.com/syssitia/btcd/database/ffldb"
 	// )
 
 	// Create a database and schedule it to be closed and removed on exit.
@@ -48,8 +48,8 @@ func Example_basicUsage() {
 	// This example assumes the ffldb driver is imported.
 	//
 	// import (
-	// 	"github.com/syscoin/btcd/database"
-	// 	_ "github.com/syscoin/btcd/database/ffldb"
+	// 	"github.com/syssitia/btcd/database"
+	// 	_ "github.com/syssitia/btcd/database/ffldb"
 	// )
 
 	// Create a database and schedule it to be closed and removed on exit.
@@ -114,8 +114,8 @@ func Example_blockStorageAndRetrieval() {
 	// This example assumes the ffldb driver is imported.
 	//
 	// import (
-	// 	"github.com/syscoin/btcd/database"
-	// 	_ "github.com/syscoin/btcd/database/ffldb"
+	// 	"github.com/syssitia/btcd/database"
+	// 	_ "github.com/syssitia/btcd/database/ffldb"
 	// )
 
 	// Create a database and schedule it to be closed and removed on exit.

@@ -8,7 +8,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/syscoin/btcd/database"
+	"github.com/syssitia/btcd/database"
 )
 
 // TestErrorCodeStringer tests the stringized output for the ErrorCode type.

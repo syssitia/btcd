@@ -20,7 +20,7 @@ systems/integration tests.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/syscoin/btcd/integration/rpctest
+$ go get -u github.com/syssitia/btcd/integration/rpctest
 ```
 
 ## License

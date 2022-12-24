@@ -9,11 +9,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/syscoin/btcd/btcec"
-	"github.com/syscoin/btcd/chaincfg"
-	"github.com/syscoin/btcd/chaincfg/chainhash"
-	"github.com/syscoin/btcd/txscript"
-	"github.com/syscoin/btcd/wire"
+	"github.com/syssitia/btcd/btcec"
+	"github.com/syssitia/btcd/chaincfg"
+	"github.com/syssitia/btcd/chaincfg/chainhash"
+	"github.com/syssitia/btcd/txscript"
+	"github.com/syssitia/btcd/wire"
 	"github.com/martinboehm/btcutil"
 )
 

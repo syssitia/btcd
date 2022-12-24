@@ -15,10 +15,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/syscoin/btcd/chaincfg"
-	"github.com/syscoin/btcd/chaincfg/chainhash"
-	"github.com/syscoin/btcd/rpcclient"
-	"github.com/syscoin/btcd/wire"
+	"github.com/syssitia/btcd/chaincfg"
+	"github.com/syssitia/btcd/chaincfg/chainhash"
+	"github.com/syssitia/btcd/rpcclient"
+	"github.com/syssitia/btcd/wire"
 	"github.com/martinboehm/btcutil"
 )
 

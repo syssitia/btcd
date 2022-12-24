@@ -75,7 +75,7 @@ type AssetType struct {
 	UpdateFlags uint8
 }
 
-type MintSyscoinType struct {
+type MintSyssitiaType struct {
 	Allocation AssetAllocationType
 	TxHash []byte
 	BlockHash []byte
@@ -88,7 +88,7 @@ type MintSyscoinType struct {
     ReceiptParentNodes []byte
 }
 
-type SyscoinBurnToEthereumType struct {
+type SyssitiaBurnToEthereumType struct {
 	Allocation AssetAllocationType
 	EthAddress []byte `json:"ethAddress,omitempty"`
 }
@@ -693,7 +693,7 @@ func (a *AssetOutType) Deserialize(r io.Reader) error {
 }
 
 
-func (a *MintSyscoinType) Deserialize(r io.Reader) error {
+func (a *MintSyssitiaType) Deserialize(r io.Reader) error {
 	err := a.Allocation.Deserialize(r)
 	if err != nil {
 		return err
@@ -741,7 +741,7 @@ func (a *MintSyscoinType) Deserialize(r io.Reader) error {
 	return nil
 }
 
-func (a *MintSyscoinType) Serialize(w io.Writer) error {
+func (a *MintSyssitiaType) Serialize(w io.Writer) error {
 	err := a.Allocation.Serialize(w)
 	if err != nil {
 		return err
@@ -785,7 +785,7 @@ func (a *MintSyscoinType) Serialize(w io.Writer) error {
 	return nil
 }
 
-func (a *SyscoinBurnToEthereumType) Deserialize(r io.Reader) error {
+func (a *SyssitiaBurnToEthereumType) Deserialize(r io.Reader) error {
 	err := a.Allocation.Deserialize(r)
 	if err != nil {
 		return err
@@ -797,7 +797,7 @@ func (a *SyscoinBurnToEthereumType) Deserialize(r io.Reader) error {
 	return nil
 }
 
-func (a *SyscoinBurnToEthereumType) Serialize(w io.Writer) error {
+func (a *SyssitiaBurnToEthereumType) Serialize(w io.Writer) error {
 	err := a.Allocation.Serialize(w)
 	if err != nil {
 		return err
